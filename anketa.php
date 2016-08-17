@@ -1,4 +1,75 @@
 <?php
+include "dbLib.php";
+$res = $connection->prepare("INSERT INTO anketa 
+												(position,
+												schedule,
+												date_get_start,
+												salary_desired,
+												Name,
+												LastName,
+												DLastName,
+												Email,
+												Tel,
+												citizenship,
+												place_liv,
+												birthday,
+												Company_name,
+												post,
+												start_job,
+												end_job,
+												responsibilities,
+												skills,
+												Institute,
+												speciality,
+												diplom,
+												Grad_year)
+										VALUES	
+												(:position,
+												:schedule,
+												:date_get_start,
+												:salary_desired,
+												:Name,
+												:LastName,
+												:DLastName,
+												:Email,
+												:Tel,
+												:citizenship,
+												:place_liv,
+												:birthday,
+												:Company_name,
+												:post,
+												:start_job,
+												:end_job,
+												:responsibilities,
+												:skills,
+												:Institute,
+												:speciality,
+												:diplom,
+												:Grad_year)"
+							);
+	$res->bindParam(':position', $position);
+	$res->bindParam(':schedule', $schedule);
+	$res->bindParam(':date_get_start', $date_get_start);
+	$res->bindParam(':salary_desired', $salary_desired);
+	$res->bindParam(':Name', $Name);
+	$res->bindParam(':LastName', $LastName);
+	$res->bindParam(':DLastName', $DLastName);
+	$res->bindParam(':Email', $Email);
+	$res->bindParam(':Tel', $Tel);
+	$res->bindParam(':citizenship', $citizenship);
+	$res->bindParam(':place_liv', $place_liv);
+	$res->bindParam(':birthday', $birthday);
+	$res->bindParam(':Company_name', $Company_name);
+	$res->bindParam(':post', $post);
+	$res->bindParam(':start_job', $start_job);
+	$res->bindParam(':end_job', $end_job);
+	$res->bindParam(':responsibilities', $responsibilities);
+	$res->bindParam(':skills', $skills);	
+	$res->bindParam(':Institute', $Institute);
+	$res->bindParam(':speciality', $speciality);
+	$res->bindParam(':diplom', $diplom);
+	$res->bindParam(':Grad_year', $Grad_year);
+	
 try 
 {
 $position = substr(htmlspecialchars(trim($_POST['position'])), 0, 100);
@@ -24,10 +95,12 @@ $speciality= substr(htmlspecialchars(trim($_POST['speciality'])), 0, 400);
 $diplom= substr(htmlspecialchars(trim($_POST['diplom'])), 0, 50);
 $Grad_year= substr(htmlspecialchars(trim($_POST['Grad_year'])), 0, 50);
 
+$res->execute();
+
 $mess = "Должность: $position\nИмя: $Name Фамилия: $LastName Отчество: $DLastName\nдля связи: $Email $Tel\nЖелаемый график: $schedule Дата начала: $date_get_start ЗП: $salary_desired\n$Гражданство: citizenship Место жительства: $place_liv День рождения: $birthday\n$Прошлая работа:\nОрганизация: Company_name Должность: $post $start_job - $end_job\nОбязанности: $responsibilities\nНавыки: $skills\nУчебное заведение:\n$Institute\n$speciality $diplom\n$Grad_year";
 // $mess = "$lastname $firstname\n$email\n$tel\n $textarea";
-$subj = "Форма обратной связи с сайта";
-$to = "paz001@yandex.ru"; //заменить на почту лосты
+$subj = "Анкета с сайта lostaspb.ru";
+$to = "info@lostaspb.ru"; 
 $from="admin@lostaspb.ru";
 $headers = "From: $from\nReply-To: $from\n";
 if (!mail($to, $subj, $mess, $headers)){
@@ -62,7 +135,7 @@ catch (RuntimeException $e) {
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
         <script type="text/javascript">
-            setTimeout('location.replace("/contact.html")', 3000);
+            setTimeout('location.replace("/vacancy.html")', 3000);
         </script>
 
     </body>

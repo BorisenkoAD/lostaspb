@@ -8,9 +8,9 @@ $email = substr(htmlspecialchars(trim($_POST['Email'])), 0, 30);
 $tel = substr(htmlspecialchars(trim($_POST['Tel'])), 0, 30);
 $textarea = substr(htmlspecialchars(trim($_POST['Text'])), 0, 400);
 $mess = "$lastname $firstname\n$email\n$tel\n $textarea";
-$subj = "Форма обратной связи с сайта";
-$to = "paz001@yandex.ru"; //заменить на почту лосты
-$from="admin@istria-spb.ru";
+$subj = "Форма обратной связи с сайта lostaspb.ru";
+$to = "info@lostaspb.ru";
+$from="adm@lostaspb.ru";
 $headers = "From: $from\nReply-To: $from\n";
 if (!mail($to, $subj, $mess, $headers)){
 	throw new RuntimeException('Ваше сообщение не отправлено.');
