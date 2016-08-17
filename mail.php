@@ -60,43 +60,7 @@ try {
         throw new RuntimeException('Перемещение файла невозможно.');
     }
         throw new RuntimeException('Ваше сообщение успешно отправлено.');
-	//---------------------------------
-$filename = $uploadfile;  // $_FILES['userfile']['name']; //Имя файла для прикрепления
-$today = date("YmdHis");
-//$newfileName = 
-$to = "paz001@yandex.ru";
-$from = "d@e.f";
-$subject = "тестовое письмо";
-$message = substr(htmlspecialchars(trim($_POST['message'])), 0, 1500);
-$subj = "=?utf-8?B?".base64_encode($subject)."?=";
-$boundary = uniqid('np');
-$nl = "\n";
 
-$file = fopen($filename, "r");
-$blob = fread($file, filesize($filename));
-fclose($file);
-
-$headers = "MIME-Version: 1.0" . $nl;
-$headers .= "From: " . $from . $nl . "Reply-To: " . $from . $nl;
-$headers .= "Content-Type: multipart/mixed;boundary=" . $boundary . $nl;
-
-$msg = "This is a MIME encoded message."; 
-$msg .= $nl . $nl . "--" . $boundary . $nl;
-$msg .= "Content-type: text/html;charset=utf-8" . $nl . $nl;
-$msg .= $message;
-$msg .= $nl . $nl . "--" . $boundary . $nl;
-$msg .= "Content-Type: application/octet-stream" . $nl;
-$msg .= "Content-Transfer-Encoding: base64" . $nl;
-$msg .= "Content-Disposition: attachment; " .
- "filename=\"=?utf-8?B?".base64_encode($filename)."?=\"" . $nl . $nl;
-$msg .= chunk_split(base64_encode($blob)) . $nl;
-$msg .= $nl . $nl . "--" . $boundary . "--";
-
-mail($to, $subj, $msg, $headers);
-//---------------------------------
-	// теперь этот файл нужно переименовать желательно в дату_время отправки
-	// потом его отправить по почте админу 
-	// и удалить его.
  } catch (RuntimeException $e) {
 
 
@@ -151,8 +115,7 @@ $msg .= $nl . $nl . "--" . $boundary . "--";
 mail($to, $subj, $msg, $headers);
 //---------------------------------	
 	// теперь этот файл нужно переименовать желательно в дату_время отправки
-	// потом его отправить по почте админу 
-	// и удалить его.
+	// потом его отправить по почте админу и удалить его.
 ?>								
                 </div>
             </div>
