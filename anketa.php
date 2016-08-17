@@ -99,8 +99,8 @@ $res->execute();
 
 $mess = "Должность: $position\nИмя: $Name Фамилия: $LastName Отчество: $DLastName\nдля связи: $Email $Tel\nЖелаемый график: $schedule Дата начала: $date_get_start ЗП: $salary_desired\n$Гражданство: citizenship Место жительства: $place_liv День рождения: $birthday\n$Прошлая работа:\nОрганизация: Company_name Должность: $post $start_job - $end_job\nОбязанности: $responsibilities\nНавыки: $skills\nУчебное заведение:\n$Institute\n$speciality $diplom\n$Grad_year";
 // $mess = "$lastname $firstname\n$email\n$tel\n $textarea";
-$subj = "Форма обратной связи с сайта";
-$to = "paz001@yandex.ru"; //заменить на почту лосты
+$subj = "Анкета с сайта lostaspb.ru";
+$to = "info@lostaspb.ru"; 
 $from="admin@lostaspb.ru";
 $headers = "From: $from\nReply-To: $from\n";
 if (!mail($to, $subj, $mess, $headers)){
