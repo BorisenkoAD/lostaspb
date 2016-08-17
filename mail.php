@@ -84,9 +84,9 @@ try {
 					<h2 class="text-center"><strong><?echo $e->getMessage();}?></strong></h2>
 <?
 //---------------------------------
-$filename = $uploadfile;  // $_FILES['userfile']['name']; //Имя файла для прикрепления
+$filename = $uploadfile;//$_FILES['userfile']['name']; //Имя файла для прикрепления $uploadfile;
 $to = "info@lostaspb.ru";
-$from = "adm@lostaspb.ru";
+$from = "info@lostaspb.ru";
 $subject = "Прикрепленное резюме с сайта";
 $message = $_POST['message'];
 $subj = "=?utf-8?B?".base64_encode($subject)."?=";
