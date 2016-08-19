@@ -1,0 +1,52 @@
+<?php
+require "dbLib.php";
+$data = $_POST;
+if(isset($data['do_login']))
+{
+	# Вытаскиваем из БД запись, у которой логин равняеться введенному
+	$stmt = $connection->prepare('SELECT login, password FROM users 
+									WHERE login =:login LIMIT 1');
+	$stmt->bindParam(':login', $login);
+	$login = $_POST['login'];
+	$stmt->execute();
+	while($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
+	$user["password"];
+}
+// логинимся
+// в базе ищем пользователя по имени
+$errors = array();
+	if($user)
+	{
+	// логин существует
+	if($user['password'] === md5(md5($_POST['password'])))
+		{
+		// все хорошо, логинем пользователя
+		$_SESSION['logged_user'] = $user;
+		} else 
+		{
+		$errors[] = 'Пароль не правильный!';
+		}
+	} else 
+	{
+	$errors[] = 'Пользователь с таким логином не найден!';
+	}
+	if(!empty($errors))
+	{
+	echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
+	}
+}
+?>
+
+<form action="/login.php" method="POST">
+	<p>
+		<p><strong>Ваш логин</strong></p>
+		<input type="text" name="login">
+	</p>
+	<p>
+		<p><strong>Ваш пароль</strong></p>
+		<input type="password" name="password">
+	</p>	
+	<p>
+		<button type="submit" name="do_login">Войти</button>
+	</p>
+</form>

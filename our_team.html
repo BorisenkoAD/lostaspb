@@ -1,3 +1,12 @@
+<?php
+require "dbLib.php";
+if (isset($_SESSION['logged_user'])) : ?>
+Авторизован<br>
+Привет, <? echo ($_SESSION['logged_user']);?>! 
+<a href="logout.html"><i class="fa fa-sign-in" aria-hidden="true"></i> Выйти</a></li>
+<? else :?>
+<? endif;?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -293,7 +302,7 @@
 						<hr>
 								<div class="col-xs-3">
 									<ul class="list-unstyled">
-										<li><i class="fa fa-home" aria-hidden="true"></i> Главная<li>
+										<li><i class="fa fa-home" aria-hidden="true"></i> Главная</li>
 											<li><a href="/">О компании</a></li>
 											<li><a href="index.html#princip">Принципы</a></li>
 											<li><a href="index.html#partner">Партнеры</a></li>
@@ -302,14 +311,14 @@
 								</div>
 								<div class="col-xs-3">
 									<ul class="list-unstyled">
-										<li><i class="fa fa-tasks" aria-hidden="true"></i> Проекты<li>
+										<li><i class="fa fa-tasks" aria-hidden="true"></i> Проекты</li>
 										<li><a href="our_project.html#project">Проекты</a></li>
 										<li><a href="our_project.html#algoritm">Алгоритм</a></li>
 									</ul>
 								</div>
 								<div class="col-xs-3">
 									<ul class="list-unstyled">
-										<li><i class="fa fa-user" aria-hidden="true"></i> Команда<li>
+										<li><i class="fa fa-user" aria-hidden="true"></i> Команда</li>
 											<li><a href="our_team.html#team">Команда</a></li>
 											<li><a href="our_team.html#party">Мероприятия</a></li>
 											<li><a href="our_team.html#answer">Отзывы</a></li>
@@ -318,7 +327,7 @@
 								</div>
 								<div class="col-xs-3">
 									<ul class="list-unstyled">
-										<li><i class="fa fa-university" aria-hidden="true"></i> Вакансии<li>
+										<li><i class="fa fa-university" aria-hidden="true"></i> Вакансии</li>
 											<li><a href="vacancy.html#perspeck">Перспективы</a></li>
 											<li><a href="vacancy.html#sovet">Советы</a></li>
 											<li><a href="vacancy.html#vacancy">Вакансии</a></li>
@@ -329,8 +338,9 @@
 						<hr>
 						<div class="row">
 								<div class="col-xs-8">
-									<ul class="list-unstyled list-inline pull-left">
+									<ul class="list-unstyled pull-left">
 										<li><a href="contact.html"><i class="fa fa-map-marker" aria-hidden="true"></i> Контакты</a></li>
+										<li><a href="login.html"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a></li>
 									</ul>
 								</div>
 								<div class="col-xs-4">
