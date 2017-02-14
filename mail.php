@@ -85,8 +85,8 @@ try {
 <?
 //---------------------------------
 $filename = $uploadfile;//$_FILES['userfile']['name']; //Имя файла для прикрепления $uploadfile;
-$to = "info@lostaspb.ru";
-$from = "info@lostaspb.ru";
+$to = "info@lostaspb.ru"; 
+$from="admin@lostaspb.ru";
 $subject = "Прикрепленное резюме с сайта";
 $message = $_POST['message'];
 $subj = "=?utf-8?B?".base64_encode($subject)."?=";
@@ -125,8 +125,8 @@ mail($to, $subj, $msg, $headers);
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
         <script type="text/javascript">
-            setTimeout('location.replace("/vacancy.html")', 3000);
-        </script>
+/*             setTimeout('location.replace("/vacancy.html")', 3000);
+ */        </script>
 
     </body>
 </html>

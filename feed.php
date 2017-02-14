@@ -2,17 +2,16 @@
 try 
 {
 
-$firstname = substr(htmlspecialchars(trim($_POST['Name'])), 0, 50);
-$lastname = substr(htmlspecialchars(trim($_POST['LastName'])), 0, 50);
+$lastname = substr(htmlspecialchars(trim($_POST['LastName'])), 0, 100);
+$name = substr(htmlspecialchars(trim($_POST['Name'])), 0, 100);
 $email = substr(htmlspecialchars(trim($_POST['Email'])), 0, 30);
-$tel = substr(htmlspecialchars(trim($_POST['Tel'])), 0, 30);
-$textarea = substr(htmlspecialchars(trim($_POST['Text'])), 0, 400);
-$mess = "$lastname $firstname\n$email\n$tel\n $textarea";
+$text = substr(htmlspecialchars(trim($_POST['Text'])), 0, 1500);
+$message = "Имя: $name \nФамилия: $lastname \nEmail: $email \nТекст: $text";
 $subj = "Форма обратной связи с сайта lostaspb.ru";
 $to = "info@lostaspb.ru";
 $from="adm@lostaspb.ru";
 $headers = "From: $from\nReply-To: $from\n";
-if (!mail($to, $subj, $mess, $headers)){
+if (!mail($to, $subj, $message, $headers)){
 	throw new RuntimeException('Ваше сообщение не отправлено.');
     }
 	throw new RuntimeException('Ваше сообщение отправлено.');
@@ -44,7 +43,7 @@ catch (RuntimeException $e) {
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
         <script type="text/javascript">
-            setTimeout('location.replace("/contact.html")', 3000);
+            setTimeout('location.replace("/index.htm")', 2300);
         </script>
 
     </body>
